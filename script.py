@@ -80,6 +80,10 @@ root.title("Агригатор Логов")
 mainframe = ttk.Frame(root, padding="10 10 10 10")
 mainframe.grid(column=0, row=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
+
+ttk.Label(mainframe, text="Агригатор Логов", font=("Arial", 16, "bold")).grid(column=1, row=0, columnspan=2, sticky=(tk.W, tk.E))
+
+
 ttk.Label(mainframe, text="Начало временного отрезка (YYYY-MM-DD):").grid(column=1, row=1, sticky=tk.W)
 start_date_entry = ttk.Entry(mainframe, width=20)
 start_date_entry.grid(column=2, row=1, sticky=(tk.W, tk.E))
@@ -92,14 +96,19 @@ ttk.Label(mainframe, text="IP адрес:").grid(column=1, row=3, sticky=tk.W)
 ip_entry = ttk.Entry(mainframe, width=20)
 ip_entry.grid(column=2, row=3, sticky=(tk.W, tk.E))
 
-ttk.Button(mainframe, text="Парсинг Логов", command=on_parse).grid(column=1, row=4, sticky=tk.W)
-ttk.Button(mainframe, text="Просмотр логов", command=on_view).grid(column=2, row=4, sticky=tk.W)
+
+ttk.Button(mainframe, text="Парсинг Логов", command=on_parse, style="TButton").grid(column=1, row=4, sticky=tk.W)
+ttk.Button(mainframe, text="Просмотр логов", command=on_view, style="TButton").grid(column=2, row=4, sticky=tk.W)
+
 
 result_text = tk.Text(mainframe, width=80, height=20)
 result_text.grid(column=1, row=5, columnspan=2, sticky=(tk.W, tk.E))
 
 for child in mainframe.winfo_children():
     child.grid_configure(padx=5, pady=5)
+
+style = ttk.Style()
+style.configure("TButton", font=("Arial", 12), foreground="blue", background="lightblue")
 
 root.mainloop()
 
